@@ -1,12 +1,79 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            <center>
+                <h2>Prototipo BootsFaces</h2>
+                <h3>Datos:</h3>
+
+                <h:panelGrid  id="grid" columns="1" cellpadding="5">
+
+
+                    <b:inputText label="Nombre:" id="nombre" required="true" value="#{usuarioBean.usuario.nombre}" >
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="fa-user"/>
+                        </f:facet>
+                    </b:inputText>
+
+
+                    <b:inputText label="Apellido:"  id="apellido" required="true" value="#{usuarioBean.usuario.apellido}"  >
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="fa-user"/>
+                        </f:facet>
+                    </b:inputText>
+
+                    <b:inputText label="Fecha Nacimiento:"  type="date" id="fecha_nacimiento" required="true" value="#{usuarioBean.usuario.fecha_nacimiento}"  >
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="fa-calendar"/>
+                        </f:facet>
+                    </b:inputText>
+
+
+                    <b:inputText label="Edad:" type="number" id="edad" required="true" value="#{usuarioBean.usuario.edad}" >
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="fa-male"/>
+                        </f:facet>
+                    </b:inputText>
+
+                    <b:panelGrid  size="xs" columns="1">
+                        <p><strong>Genero:*</strong></p>
+                    <b:radiobutton itemLabel="Genero:"  required="true"  id="Genero" value="#{usuarioBean.usuario.genero}" >
+                        <f:selectItem itemLabel="Hombre" itemValue="Hombre" />
+                        <f:selectItem itemLabel="Mujer" itemValue="Mujer" />
+                    </b:radiobutton >
+                    </b:panelGrid>
+
+                    <!--<p:outputLabel for="pais" value="Pais:" />-->
+                    <b:selectOneMenu label="Pais:" required="true" id="pais" value="#{usuarioBean.usuario.pais}"  style="width:125px">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItem itemLabel="Ecuador" itemValue="Ecuador" />
+                        <f:selectItem itemLabel="Peru" itemValue="Peru" />
+                        <f:selectItem itemLabel="Colombia" itemValue="Colombia" />
+                        <f:selectItem itemLabel="Panama" itemValue="Panama" />
+                    </b:selectOneMenu >
+
+                    <!-- <p:outputLabel for="pasatiempo" value="Pasatiempos:" />-->
+                   <!-- <b:selectBooleanCheckbox caption="Leer"  label="Leer" required="true" id="pasatiempo" value="#{usuarioBean.usuario.pasatiempos}"  />
+                    <b:selectBooleanCheckbox caption="Ver la tele 1"  label="Ver la tele" required="true" id="pasatiempo1" value="#{usuarioBean.usuario.pasatiempos}"  />
+                    <b:selectBooleanCheckbox caption="Ir al cine"  label="Ir al cine" required="true" id="pasatiempo2" value="#{usuarioBean.usuario.pasatiempos}"  />
+                    <b:selectBooleanCheckbox caption="Pescar"  label="Pescar" required="true" id="pasatiempo3" value="#{usuarioBean.usuario.pasatiempos}"  />
+                    <b:selectBooleanCheckbox caption="Pescar"  label="Pescar" required="true" id="pasatiempo4" value="#{usuarioBean.usuario.pasatiempos}"  />
+                    <b:selectBooleanCheckbox caption="Ir de caza"  label="Ir de caza" required="true" id="pasatiempo5" value="#{usuarioBean.usuario.pasatiempos}"  />
+                    <b:selectBooleanCheckbox caption="Ver partidos"  label="Ver partidos" required="true" id="pasatiempo6" value="#{usuarioBean.usuario.pasatiempos}"  />
+                   -->
+
+                </h:panelGrid>
+                <b:growl id="mensaje" />
+                <b:commandButton look="btn btn-success"  icon-awesome="fa fa-floppy-o" action="#{usuarioBean.guardarDatos()}" id="submitButton" value="Guardar" update="@form mensaje" />
+            </center>
+        </h:form>
     </h:body>
 </html>
 

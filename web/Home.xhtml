@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Home</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <b:navBar brandHref="Home.xhtml"  brand="Bootsfaces" fluid="true">
+                <b:navbarLinks style="width: 85%">
+                    <b:navLink icon-awesome="home" value="Home" href="Home.xhtml"></b:navLink>
+                    <b:navLink icon-awesome="user" value="Nuevo" href="Ingreso.xhtml"></b:navLink>
+                    <b:navLink style="float: right" icon-awesome="fa-sign-out" value="Salir" href="Login.xhtml"></b:navLink>
+                </b:navbarLinks>
+            </b:navBar>
+            <h:form>
+
+                <b:panel >
+                    <f:facet name="heading">
+
+                        <center>
+
+                            <h4>Lista de Usuarios</h4>
+                        </center>
+                    </f:facet>
+
+                    <b:dataTable value="#{homeController.lst}"
+                                 var="car">
+                        <b:dataTableColumn value="#{car.id}" />
+                        <b:dataTableColumn value="#{car.nombrecompleto}" />
+                        <b:dataTableColumn value="#{car.usuario}" />
+                        <b:dataTableColumn value="#{car.clave}" />
+                        <b:dataTableColumn value="#{car.activo}" />
+                        <b:dataTableColumn value="#{car.foto}"  />
+                        <b:dataTableColumn value="#{car.rol}"  />
+                    </b:dataTable>
+
+                </b:panel>
+            </h:form>
+        </h:form>
+    </h:body>
+</html>
+
+

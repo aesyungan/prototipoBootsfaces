@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <b:navBar brand="BootsFaces"  brandHref="Login.xhtml" fluid="true">
+            <b:navbarLinks>
+
+            </b:navbarLinks>
+        </b:navBar>
+        <h:form style="margin-top: 1em;margin-left: 15em">
+
+            <b:container  >
+                <b:panel span="8" title="Login" look="info">
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputText value="Username:" />
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:inputText placeholder="Username" id="username" value="#{loginController.usuario.usuario}">
+                                <f:facet name="prepend">
+                                    <b:icon name="user" />
+                                </f:facet>
+                            </b:inputText>
+                        </b:column>
+
+                    </b:row>
+                    <b:row tooltip="This password has fancy error messages.">
+                        <b:column medium-screen="2">
+                            <h:outputText value="Password:" />
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:inputSecret placeholder="Password" id="password" value="#{loginController.usuario.clave}">
+
+                                <f:facet name="prepend">
+                                    <b:iconAwesome name="key" />
+                                </f:facet>
+                            </b:inputSecret>
+                        </b:column>
+
+                    </b:row>
+                    
+                    <b:row>
+                        <b:column span="2" offset="2">
+                            <b:commandButton value="login" action="#{loginController.logear()}" update="@form message" look="primary"
+                                             style="width:100%" />
+                        </b:column>
+                        <b:column span="2">
+                            <b:commandButton value="Cancelar" action="#{loginController.borrar()}" update="@form message"
+                                             look="danger" style="width:100%" />
+                        </b:column>
+                        <b:growl id="message"/>
+                    </b:row>
+                    
+                </b:panel>
+            </b:container>
+
+        </h:form>
+    </h:body>
+</html>
+
+

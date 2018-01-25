@@ -1,10 +1,12 @@
 package bean;
 
-import entidades.Usuario;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import rnegocio.clases.Usuario;
+import rnegocio.funciones.FUsuario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,20 +19,23 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class UsuarioBean {
+public class UsuarioController {
 
-    Usuario usuario = new Usuario();
+    Usuario usuarioNuevo = new Usuario();
 
-    public void guardarDatos() {
+    public void guardarDatos() throws Exception {
+        FUsuario.insertar(usuarioNuevo);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Guardado.", "Correcto."));
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getUsuarioNuevo() {
+        return usuarioNuevo;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuarioNuevo(Usuario usuarioNuevo) {
+        this.usuarioNuevo = usuarioNuevo;
     }
+
+   
     
 }

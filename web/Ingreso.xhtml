@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <b:navBar brandHref="Home.xhtml" brand="Bootsfaces" fluid="true">
+            <b:navbarLinks style="width: 85%">
+                <b:navLink icon-awesome="home" value="Home" href="Home.xhtml"></b:navLink>
+                <b:navLink icon-awesome="user" value="Nuevo" href="Ingreso.xhtml"></b:navLink>
+                <b:navLink style="float: right" icon-awesome="fa-sign-out" value="Salir" href="Login.xhtml"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        <h:form>
+            <center>
+
+                <h3> Nuevo Usuario:</h3>
+
+                <h:panelGrid class="b"  id="grid" columns="1" cellpadding="20">
+
+
+                    <div class="form-group">
+                        <b:inputText id="nameu" maxlength="14" value="#{usuarioController.usuarioNuevo.nombrecompleto}" placeholder="Nombre Completo" required="true" label="Nombre Completo" colMd="5" labelColMd="6" labelStyleClass="label-input-pregunta">
+                            <f:ajax render="nameu"/>
+                        </b:inputText>
+                        <b:message for="@previous" />
+                    </div>
+                    <div class="form-group">
+                        <b:inputText id="email"  maxlength="70" value="#{usuarioController.usuarioNuevo.email}"  placeholder="Email" required="true" label="Email" colMd="5" labelColMd="4" labelStyleClass="label-input-pregunta">
+                            <f:ajax render="email"/>
+
+                        </b:inputText>
+                        <b:message for="@previous" />
+                    </div>
+                    <div class="form-group">
+                        <b:inputText  value="#{usuarioController.usuarioNuevo.usuario}" placeholder="Usuario" required="true" label="Usuario" colMd="5" labelColMd="4" labelStyleClass="label-input-pregunta">
+
+                        </b:inputText>
+                        <b:message for="@previous" />
+                    </div>
+                    <div class="form-group">       
+                        <b:inputSecret id="pass" maxlength="70" value="#{usuarioController.usuarioNuevo.clave}" placeholder="Password" required="true" label="Password" colMd="5" labelColMd="4" labelStyleClass="label-input-pregunta">
+
+                        </b:inputSecret>
+                        <b:message for="@previous" />
+                    </div>
+                    <div class="form-group">
+                        <b:selectOneMenu   value="#{usuarioController.usuarioNuevo.rol}" colMd="4" required="true" label="Rol" labelColMd="20">
+                            <f:selectItem itemLabel="Invitado"  itemValue="2" />
+                            <f:selectItem itemLabel="Ejecutivo" itemValue="3" />
+                            <f:selectItem itemLabel="Administrador" itemValue="1" />
+
+
+                        </b:selectOneMenu>
+                    </div>
+                    <div class="form-group">
+
+                        <b:commandButton col-xs="14"  action="#{usuarioController.guardarDatos()}"   look="btn btn-success" value="Guardar" update="@form mensaje"  />
+                    </div>
+                    <b:growl id="mensaje" />
+                </h:panelGrid>
+
+            </center>
+        </h:form>
+
+
+
+    </h:body>
+</html>
+

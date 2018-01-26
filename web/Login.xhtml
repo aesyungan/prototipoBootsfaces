@@ -13,7 +13,7 @@
 
             </b:navbarLinks>
         </b:navBar>
-        <h:form style="margin-top: 1em;margin-left: 15em">
+        <h:form id="frm" style="margin-top: 1em;margin-left: 15em">
 
             <b:container  >
                 <b:panel span="8" title="Login" look="info">
@@ -47,11 +47,11 @@
                     
                     <b:row>
                         <b:column span="2" offset="2">
-                            <b:commandButton value="login" action="#{loginController.logear()}" update="@form message" look="primary"
+                            <b:commandButton id="btnLogin" value="login" action="#{loginController.logear()}" update="@form message" look="primary"
                                              style="width:100%" />
                         </b:column>
                         <b:column span="2">
-                            <b:commandButton value="Cancelar" action="#{loginController.borrar()}" update="@form message"
+                            <b:commandButton id="btnCancelar" value="Cancelar" action="#{loginController.borrar()}" update="@form message"
                                              look="danger" style="width:100%" />
                         </b:column>
                         <b:growl id="message"/>

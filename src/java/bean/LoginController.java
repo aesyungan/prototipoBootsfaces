@@ -31,10 +31,12 @@ public class LoginController {
                 }
             }
             if (user_res != null) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Home.xhtml");
+                //FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Home.xhtml");
             }else{
                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de usuario o contraseña", "Usuario o Contraseña Incorecto."));
             }
+            
+            System.out.println("Logeando");
     }
 
     public void borrar() {

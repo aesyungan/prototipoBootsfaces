@@ -25,7 +25,7 @@ public class UsuarioController {
 
     public void guardarDatos() throws Exception {
         FUsuario.insertar(usuarioNuevo);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Guardado.", "Correcto."));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se Inserto Corectamente.", "Correcto."));
     }
 
     public Usuario getUsuarioNuevo() {

@@ -24,19 +24,21 @@ public class LoginController {
 
     public void logear() throws Exception {
 
-          Usuario user_res = null;
-            for (Usuario item : FUsuario.obtener()) {
-                if (this.usuario.getUsuario().equals(item.getUsuario()) && this.usuario.getClave().equals(item.getClave())) {
-                    user_res = item;
-                }
+        // System.out.println("usuario->"+usuario.getUsuario().toString());
+        //System.out.println("usuario->"+usuario.getClave().toString());
+        Usuario user_res = null;
+        for (Usuario item : FUsuario.obtener()) {
+            if (this.usuario.getUsuario().equals(item.getUsuario()) && this.usuario.getClave().equals(item.getClave())) {
+                user_res = item;
             }
-            if (user_res != null) {
-                //FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Home.xhtml");
-            }else{
-               FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de usuario o contraseña", "Usuario o Contraseña Incorecto."));
-            }
-            
-            System.out.println("Logeando");
+        }
+        if (user_res != null) {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("faces/Home.xhtml");
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de usuario o contraseña", "Usuario o Contraseña Incorecto."));
+        }
+
+        System.out.println("Logeando");
     }
 
     public void borrar() {
@@ -50,7 +52,5 @@ public class LoginController {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    
 
 }

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <b:navBar brand="BootsFaces"  brandHref="Login.xhtml" fluid="true">
+            <b:navbarLinks style="width: 85%">
+                <b:navLink icon-awesome="home" value="Home" href="Home.xhtml"></b:navLink>
+                <b:navLink icon-awesome="user" value="Nuevo" href="Ingreso.xhtml"></b:navLink>
+                <b:navLink icon-awesome="user" value="Eliminar" href="Eliminar.xhtml"></b:navLink>
+                <b:navLink style="float: right" icon-awesome="fa-sign-out" value="Salir" href="Login.xhtml"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        <h:form id="frm" style="margin-top: 1em;margin-left: 15em">
+
+            <b:container  id="container" >         
+                <b:row>
+                    <b:column span="2">
+                        <b:commandButton id="btnCancelar" value="Eliminar" action="#{usuarioEliminarController.eliminar()}" update="@form message"
+                                         look="danger" style="width:100%" />
+                    </b:column>
+                    <b:growl id="message"/>
+                </b:row>
+            </b:container>
+        </h:form>
+    </h:body>
+</html>
+
+

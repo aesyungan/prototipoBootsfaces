@@ -85,6 +85,22 @@ public class FUsuario {
         return band;
     }
 
+    public static boolean eliminarJmeter(String name) throws Exception {
+        boolean band = false;
+        String sql = "delete from public.usuario where usuario=? ";
+        ArrayList<Parametro> lstpar = new ArrayList<Parametro>();
+
+//campos con referencias
+//campos sin referencias
+        lstpar.add(new Parametro(1, name));
+        try {
+            band = AccesoDatos.ejecutaComando1(sql, lstpar);
+        } catch (Exception ex) {
+            throw ex;
+        }
+        return band;
+    }
+
     public static boolean eliminar(Usuario obj) throws Exception {
         boolean band = false;
         String sql = "delete from public.usuario where id=? ";
@@ -118,6 +134,7 @@ public class FUsuario {
         }
         return miUsuario;
     }
+
     public static Usuario obtenerUserName(Usuario u) throws Exception {
         Usuario miUsuario = null;
         try {
@@ -148,13 +165,14 @@ public class FUsuario {
         }
         return lst;
     }
+
     public static ArrayList<Usuario> obtener(Cuestionario c) throws Exception {
         ArrayList<Usuario> lst = new ArrayList<>();
         try {
             ArrayList<Parametro> lstpar = new ArrayList<Parametro>();
             lstpar.add(new Parametro(1, c.getId()));
             String sql = "select DISTINCT u.id, u.nombrecompleto, u.email, u.usuario, u.clave, u.activo, u.foto, u.rol from public.cuestionario as c inner join public.encuesta as e on e.id_cuestionario=c.id  inner join usuario as u on u.id=e.id_usuario  where c.id=? and e.estado=1 order by u.nombrecompleto asc";
-            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql,lstpar);
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstpar);
             lst = llenarUsuarios(rs);
 
         } catch (Exception ex) {
